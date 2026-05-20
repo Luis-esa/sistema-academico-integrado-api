@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 public class TurmaResponseDTO {
 
     private Long id;
-    private DisciplinaResumoResponseDTO disciplina;
-    private ProfessorResumoResponseDTO professor;
-    private PeriodoLetivoResumoResponseDTO periodoLetivo;
+    private DisciplinaResponseDTO disciplina;
+    private ProfessorResponseDTO professor;
+    private PeriodoLetivoResponseDTO periodoLetivo;
     private String descricao;
     private String codigoSuap;
     private StatusEnum statusEnum;

@@ -1,6 +1,6 @@
 package br.edu.ifs.sistemaacademicointegradoapi.dto.boletim;
 
-import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResumoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResponseDTO;
 import br.edu.ifs.sistemaacademicointegradoapi.model.StatusEnum;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +14,9 @@ import java.time.LocalDateTime;
 public class NotaResponseDTO {
 
     private Long id;
-    private MatriculaTurmaResumoResponseDTO matriculaTurma;
+    private MatriculaTurmaResponseDTO matriculaTurma;
     private BigDecimal valor;
     private BigDecimal peso;
     private String descricao;
-    private StatusEnum statusEnum;
     private LocalDate dataAvaliacao;
-    private LocalDateTime dataCriacao;
 }

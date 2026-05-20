@@ -31,8 +31,8 @@ public class ChatMensagem {
     @Column(name = "msg_tx_mensagem", nullable = false, columnDefinition = "TEXT")
     private String mensagem;
 
-    @Column(name = "msg_dt_envio", nullable = false, insertable = false, updatable = false)
-    private LocalDateTime dataDeEnvio;
+    @Column(name = "msg_dt_envio", nullable = false, updatable = false)
+    private LocalDateTime dataDeEnvio = LocalDateTime.now();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "msg_tx_status", nullable = false, length = 1, columnDefinition = "char(1)")

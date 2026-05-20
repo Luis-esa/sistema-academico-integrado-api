@@ -1,6 +1,6 @@
 package br.edu.ifs.sistemaacademicointegradoapi.dto.boletim;
 
-import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResumoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResponseDTO;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class FaltaResponseDTO {
 
     private Long id;
-    private MatriculaTurmaResumoResponseDTO matriculaTurma;
+    private MatriculaTurmaResponseDTO matriculaTurma;
     private LocalDate dataAula;
     private Integer quantidadeFaltas;
     private String justificativa;

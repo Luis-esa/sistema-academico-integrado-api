@@ -5,17 +5,17 @@ import br.edu.ifs.sistemaacademicointegradoapi.model.StatusEnum;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Builder
 @Data
 public class MatriculaTurmaResponseDTO {
 
     private Long id;
-    private AlunoResumoResponseDTO aluno;
-    private TurmaResumoResponseDTO turma;
+    private AlunoResponseDTO aluno;
+    private TurmaResponseDTO turma;
     private SituacaoMatriculaEnum situacaoMatriculaEnum;
     private StatusEnum statusEnum;
-    private LocalDateTime dataCadastro;
+    private LocalDate dataMatricula;
 
 }
