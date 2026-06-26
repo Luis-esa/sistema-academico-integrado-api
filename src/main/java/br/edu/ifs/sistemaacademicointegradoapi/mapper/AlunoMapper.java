@@ -1,41 +1,34 @@
 package br.edu.ifs.sistemaacademicointegradoapi.mapper;
 
 import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.AlunoResponseDTO;
-import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.CursoResumoResponseDTO;
-import br.edu.ifs.sistemaacademicointegradoapi.dto.usuario.UsuarioResumoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.CursoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.usuario.UsuarioResponseDTO;
 import br.edu.ifs.sistemaacademicointegradoapi.model.Aluno;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AlunoMapper {
 
+    private final UsuarioMapper usuarioMapper;
+    private final CursoMapper cursoMapper;
+
+    public AlunoMapper(UsuarioMapper usuarioMapper, CursoMapper cursoMapper) {
+        this.usuarioMapper = usuarioMapper;
+        this.cursoMapper = cursoMapper;
+    }
+
     public AlunoResponseDTO toResponseDTO(Aluno aluno) {
         if (aluno == null) {
             return null;
         }
 
-        UsuarioResumoResponseDTO usuarioResumo = null;
-        if (aluno.getUsuario() != null) {
-            usuarioResumo = UsuarioResumoResponseDTO.builder()
-                    .id(aluno.getUsuario().getId())
-                    .nome(aluno.getUsuario().getNome())
-                    .email(aluno.getUsuario().getEmail())
-                    .login(aluno.getUsuario().getLogin())
-                    .build();
-        }
-
-        CursoResumoResponseDTO cursoResumo = null;
-        if (aluno.getCurso() != null) {
-            cursoResumo = CursoResumoResponseDTO.builder()
-                    .id(aluno.getCurso().getId())
-                    .nome(aluno.getCurso().getNome())
-                    .build();
-        }
+        UsuarioResponseDTO usuario = usuarioMapper.toResponseDTO(aluno.getUsuario());
+        CursoResponseDTO curso = cursoMapper.toResponseDTO(aluno.getCurso());
 
         return AlunoResponseDTO.builder()
                 .id(aluno.getId())
-                .usuario(usuarioResumo)
-                .curso(cursoResumo)
+                .usuario(usuario)
+                .curso(curso)
                 .matricula(aluno.getMatricula())
                 .statusEnum(aluno.getStatus())
                 // O AlunoResponseDTO possui dataCadastro, mas a entidade Aluno não o tem mapeado, 

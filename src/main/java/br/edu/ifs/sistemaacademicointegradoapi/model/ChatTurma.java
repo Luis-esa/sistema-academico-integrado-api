@@ -31,7 +31,7 @@ public class ChatTurma {
     @Column(name = "cht_tx_status", nullable = false, length = 1, columnDefinition = "char(1)")
     private StatusEnum statusEnum = StatusEnum.A;
 
-    @Column(name = "cht_dt_criacao", nullable = false, updatable = false, insertable = false)
-    private LocalDateTime dataCriacao;
+    @Column(name = "cht_dt_criacao", nullable = false, updatable = false)
+    private LocalDateTime dataCriacao = LocalDateTime.now();
 
 }

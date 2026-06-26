@@ -43,6 +43,6 @@ public class Usuario {
     @Column(name = "usu_tx_status", nullable = false, length = 1, columnDefinition = "char(1)")
     private StatusEnum status = StatusEnum.A;
 
-    @Column(name = "usu_dt_cadastro", nullable = false, updatable = false, insertable = false)
-    private LocalDateTime dataCadastro;
+    @Column(name = "usu_dt_cadastro", nullable = false, updatable = false)
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 }

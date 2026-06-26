@@ -1,6 +1,6 @@
 package br.edu.ifs.sistemaacademicointegradoapi.dto.ensino;
 
-import br.edu.ifs.sistemaacademicointegradoapi.dto.usuario.UsuarioResumoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.usuario.UsuarioResponseDTO;
 import br.edu.ifs.sistemaacademicointegradoapi.model.StatusEnum;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.Data;
 public class ProfessorResponseDTO {
 
     private Long id;
-    private UsuarioResumoResponseDTO usuario;
+    private UsuarioResponseDTO usuario;
     private String matriculaSiape;
     private StatusEnum statusEnum;
     private String dataCadastro;

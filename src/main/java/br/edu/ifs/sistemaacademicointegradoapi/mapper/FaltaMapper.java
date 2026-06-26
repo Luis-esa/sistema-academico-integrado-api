@@ -1,32 +1,29 @@
 package br.edu.ifs.sistemaacademicointegradoapi.mapper;
 
 import br.edu.ifs.sistemaacademicointegradoapi.dto.boletim.FaltaResponseDTO;
-import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResumoResponseDTO;
+import br.edu.ifs.sistemaacademicointegradoapi.dto.ensino.MatriculaTurmaResponseDTO;
 import br.edu.ifs.sistemaacademicointegradoapi.model.Falta;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FaltaMapper {
 
+    private final MatriculaTurmaMapper matriculaTurmaMapper;
+
+    public FaltaMapper(MatriculaTurmaMapper matriculaTurmaMapper) {
+        this.matriculaTurmaMapper = matriculaTurmaMapper;
+    }
+
     public FaltaResponseDTO toResponseDTO(Falta falta) {
         if (falta == null) {
             return null;
         }
 
-        MatriculaTurmaResumoResponseDTO matriculaResumo = null;
-        if (falta.getMatriculaTurma() != null) {
-            matriculaResumo = MatriculaTurmaResumoResponseDTO.builder()
-                    .id(falta.getMatriculaTurma().getId())
-                    .alunoNome(falta.getMatriculaTurma().getAluno() != null && falta.getMatriculaTurma().getAluno().getUsuario() != null ? falta.getMatriculaTurma().getAluno().getUsuario().getNome() : null)
-                    .alunoMatricula(falta.getMatriculaTurma().getAluno() != null ? falta.getMatriculaTurma().getAluno().getMatricula() : null)
-                    .turmaDescricao(falta.getMatriculaTurma().getTurma() != null ? falta.getMatriculaTurma().getTurma().getDescricao() : null)
-                    .situacaoMatriculaEnum(falta.getMatriculaTurma().getSituacaoMatriculaEnum())
-                    .build();
-        }
+        MatriculaTurmaResponseDTO matriculaTurma = matriculaTurmaMapper.toResponseDTO(falta.getMatriculaTurma());
 
         return FaltaResponseDTO.builder()
                 .id(falta.getId())
-                .matriculaTurma(matriculaResumo)
+                .matriculaTurma(matriculaTurma)
                 .dataAula(falta.getDataAula())
                 .quantidadeFaltas(falta.getQuantidadeFaltas())
                 .justificativa(falta.getJustificativa())
